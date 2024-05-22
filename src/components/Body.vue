@@ -29,9 +29,8 @@ import { ref, onMounted } from 'vue'
 const ribbonDiv = ref(null)
 
 onMounted(() => {
-  const headerHeight = document.querySelector('header').offsetHeight + 1
-  console.log(headerHeight)
-  document.querySelector('main.body').style.paddingTop = `${headerHeight}px`
+  //   const headerHeight = document.querySelector('header').offsetHeight + 1
+  //   document.querySelector('main.body').style.paddingTop = `${headerHeight}px`
   setTimeout(() => {
     ribbonDiv.value.classList.add('downwards')
   }, 200)

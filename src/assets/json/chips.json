@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "category": "14-inch",
+    "chips_availability": [
+      { "title": "All", "value": "14_all" },
+      { "title": "M3", "value": "14_m3" },
+      { "title": "M3 Pro", "value": "14_m3pro" },
+      { "title": "M3 Max", "value": "14_m3max" }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "16-inch",
+    "chips_availability": [
+      { "title": "All", "value": "16_all" },
+      { "title": "M3 Pro", "value": "16_m3pro" },
+      { "title": "M3 Max", "value": "16_m3max" }
+    ]
+  }
+]

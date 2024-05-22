@@ -1,9 +1,6 @@
 <template>
   <!-- empty non working header -->
-  <header
-    :class="(isSubtitleOpen ? 'open' : 'close')"
-    :style="{ height: headerHeight + 'px' }"
-  >
+  <header :class="(isSubtitleOpen ? 'open' : 'close')">
     <div class="header-content max-w-[1024px] mx-auto">
       <nav class="relative">
         <ul class="flex justify-between items-center fs-100">
@@ -60,7 +57,7 @@
 
       <div :class="(isSubtitleOpen ? 'open' : '') + ' subtitle relative flex justify-between'">
         <div class="subtitle-content">
-          <h1 class="subtitle-text h-fit fs-500 basis-full">Macbook Pro</h1>
+          <h1 class="subtitle-text h-fit fs-500 basis-full font-medium">Macbook Pro</h1>
           <button
             @click="toggleSubtitleOpen"
             :class="'subtitle-caret flex justify-end ' + (isSubtitleOpen ? 'up' : 'down')"
@@ -126,7 +123,9 @@ onMounted(() => {
 
 <style scoped>
 header {
-  position: fixed;
+  /* if i want to use fixed nav */
+  /* position: fixed;  */
+  position: relative;
   width: 100%;
   top: 0;
   z-index: 99;
@@ -199,7 +198,7 @@ ul > li > span {
 .subtitle-content {
   position: relative;
   background: var(--clr-white);
-  z-index: 10;
+  z-index: 7;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -241,7 +240,7 @@ ul > li > span {
   .subtitle-options {
     background: var(--clr-white);
     position: absolute;
-    top: -25vh;
+    top: -15vh;
     opacity: 0;
     flex-direction: column;
     padding-inline: 0.1rem;
@@ -254,7 +253,7 @@ ul > li > span {
     top: 100%;
     left: 0;
     opacity: 1;
-    transition: all 0.3s ease-in, opacity 0s ease-in;
+    transition: top 0.3s ease-out, opacity 1.5s ease-out;
     height: fit-content;
     flex-basis: 100%;
     border-bottom: 1px solid rgba(158, 158, 158, 0.5);

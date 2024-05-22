@@ -4,7 +4,8 @@
 :root {
   --clr-white: #fafafc;
   --clr-dimblack: #000000;
-  --clr-link: #06c;
+  --clr-link: #0066cc;
+  --clr-button: #0071e3;
   --ff-main: 'Roboto', sans-serif;
   --fs-100: 12px;
   --fs-200: 14px;
@@ -15,6 +16,7 @@
   --fs-700: 32px;
   --fs-800: 38px;
   --fs-900: 48px;
+  --width-limit: 980px;
 }
 
 @media screen and (max-width: 820px) {
@@ -24,6 +26,7 @@
     --fs-700: 28px;
     --fs-800: 32px;
     --fs-900: 38px;
+    --width-limit: 80%;
   }
 }
 *,
@@ -165,4 +168,25 @@ h6 {
 
 .fc-dimblack {
   color: var(--clr-dimblack);
+}
+
+/* HIDE RADIO */
+[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type='radio'] + img {
+  cursor: pointer;
+  padding: 0.1rem;
+}
+
+/* CHECKED STYLES */
+[type='radio']:checked + img {
+  outline: 2px solid #0071e3;
+  border-radius: 50%;
+  position: relative;
 }

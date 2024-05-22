@@ -20,30 +20,166 @@
         <div class="size-selector">
           <button
             class="size-select left"
-            :class="{ 'selected': selectedSize === 1 }"
-            @click="selectSize(1)"
+            :class="{ 'selected': selectedSize === '14-inch' }"
+            @click="selectSize('14-inch')"
           >14-Inch</button>
         </div>
         <div class="size-selector">
           <button
             class="size-select right"
-            :class="{ 'selected': selectedSize === 2 }"
-            @click="selectSize(2)"
+            :class="{ 'selected': selectedSize === '16-inch' }"
+            @click="selectSize('16-inch')"
           >16-Inch</button>
         </div>
       </div>
-      <!-- filter chip -->
-      <div class="filter-chip-wrapper">
-        <p class="fs-200 font-light text-center">Filter by chip:</p>
-        <div class="chips-selection flex gap-4 py-3">
-          <button
-            v-for="(chip, index) in getFilteredChips()"
-            :key="index"
-            class="chip-select"
-            :class="(index === 0 ? 'selected' : '')"
-            :id="chip.value"
-            @click="selectChip(chip.value)"
-          >{{chip.title}}</button>
+      <div class="content-limit flex flex-col items-center gap-4">
+        <!-- filter chip -->
+        <div class="filter-chip-wrapper">
+          <p class="fs-200 font-light text-center">Filter by chip:</p>
+          <div class="chips-selection flex gap-4 py-3">
+            <button
+              v-for="(chip, index) in getFilteredChips()"
+              :key="index"
+              class="chip-select"
+              :class="(index === 0 ? 'selected' : '')"
+              :id="chip.value"
+              @click="selectChip(chip.value)"
+            >{{chip.title}}</button>
+          </div>
+        </div>
+        <!-- macbooks -->
+        <div class="macbooks-content">
+          <div
+            class="macbook flex flex-col gap-3"
+            v-for="(macbook) in macbookFilteredState"
+            :key="macbook.id"
+          >
+            <img
+              width="452"
+              height="420"
+              class="macbook-img"
+              :id="`macbook-${macbook.id}`"
+              :src="getMacbookImageSrc(macbook.id)"
+              :alt="selectedColors[macbook.id]"
+            >
+            <div class="colors-selection">
+              <p class="fs-100 font-light">{{ selectedColors[macbook.id] }}</p>
+              <div class="colors flex gap-3 items-center py-3">
+                <label
+                  v-for="(color, colorIndex) in macbook.color"
+                  :key="colorIndex"
+                >
+                  <input
+                    type="radio"
+                    :name="`macbook-${macbook.id}-color`"
+                    :value="color"
+                    :checked="selectedColors[macbook.id] === color"
+                    @change="updateColor(macbook.id, color)"
+                  >
+                  <img
+                    width="32"
+                    height="32"
+                    :alt="color"
+                    :src="getMacbookColorsSrc(color)"
+                  >
+                </label>
+              </div>
+            </div>
+            <img
+              width="51"
+              height="51"
+              class="chip-img"
+              :src="getMacbookChipImageSrc(macbook.chip_type)"
+              :alt="macbook.chip_type"
+            >
+            <div class="title-content py-3">
+              <h2
+                v-for="(title,index) in macbook.title"
+                :key="index"
+                class="fs-600 font-medium"
+              >{{ title }}</h2>
+              <div class="subtitle-content pt-5 pb-3">
+                <p
+                  v-for="(subtitle,index) in macbook.subtitle"
+                  :key="index"
+                  class="fs-200 font-light mb-1"
+                >{{ subtitle }}</p>
+              </div>
+
+              <h2 class="fs-600 font-medium leading-relaxed">{{ macbook.price }}</h2>
+              <p class="fs-200 py-3">or</p>
+              <h2 class="fs-600 font-medium leading-relaxed">{{ macbook.installment }}/mo. for <br> 24 mo.*</h2>
+
+              <a
+                href="https://www.apple.com/my/shop/financing/installments/overlay?ca=7499.00&product=MTL73ZP/A"
+                target="_blank"
+                class="fs-300 flex gap-1 items-center py-2"
+              >
+                <span>Explore monthly instalment options</span>
+                <FontAwesomeIcon
+                  class="fs-100"
+                  :icon="faAngleRight"
+                />
+                <FontAwesomeIcon
+                  class="fs-300"
+                  :icon="faSquarePlus"
+                />
+              </a>
+
+              <div class="trade-in-content fs-200 py-3">
+                <p class="font-medium">Add a trade-in</p>
+                <p class="font-light">Get credit towards a new Mac when you trade in your eligible computer. Or recycle it for free.<sup>**</sup></p>
+                <a
+                  href=""
+                  target="_blank"
+                  class="flex items-center gap-2 pt-1"
+                >
+                  <span>Get Started</span>
+                  <FontAwesomeIcon
+                    class="fs-300"
+                    :icon="faSquarePlus"
+                  />
+                </a>
+              </div>
+
+              <div class="select-content py-3">
+                <RouterLink
+                  to="/about"
+                  class="select-btn fs-200 font-medium"
+                >Select</RouterLink>
+              </div>
+
+              <div class="save-content fs-200 py-3">
+                <p class="font-medium">Need a moment?</p>
+                <p class="font-light">Keep all your selections by saving this device to Your Saves, then come back anytime and pick up right where you left off.</p>
+                <a
+                  href="https://www.apple.com/my/shop/buy-mac/macbook-pro/14-inch"
+                  target="_blank"
+                  class="flex items-center gap-2 py-1"
+                >
+                  <FontAwesomeIcon :icon="faBookmark" />
+                  <span>Save for later</span>
+                </a>
+              </div>
+
+              <div class="delivery-content flex gap-3 pt-4 pb-2">
+                <FontAwesomeIcon :icon="faTruck" />
+                <div class="delivery-details fs-200">
+                  <p>Delivery:</p>
+                  <p class="font-light">In Stock</p>
+                  <p class="font-light">Free Shipping</p>
+                  <a
+                    href="https://www.apple.com/my/shop/buy-mac/macbook-pro/14-inch"
+                    target="_blank"
+                    class="flex items-center gap-2 py-1"
+                  >
+                    <span>Get delivery dates</span>
+                    <FontAwesomeIcon :icon="faSquarePlus" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -52,19 +188,27 @@
 
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faComments } from '@fortawesome/free-regular-svg-icons'
+import { faBookmark, faComments } from '@fortawesome/free-regular-svg-icons'
 import { ref, onMounted } from 'vue'
+import { faAngleRight, faCirclePlus, faTruck } from '@fortawesome/free-solid-svg-icons'
+import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 
-const selectedSize = ref(1)
-const selectedChip = ref('')
-const chipsAvailability = ref([])
+const selectedSize = ref('14-inch')
+const selectedChip = ref('14_all')
+const chipsAvailabilityState = ref([])
+const macbookState = ref([])
+const macbookFilteredState = ref([])
+const selectedColors = ref({})
 // select a size
 const selectSize = (size) => {
   selectedSize.value = size
   resetSelectedChip()
-  const filteredChips = chipsAvailability.value.filter((item) => item.id === selectedSize.value)
+  const filteredChips = chipsAvailabilityState.value.filter(
+    (item) => item.category === selectedSize.value
+  )
   if (filteredChips.length > 0) {
     selectedChip.value = filteredChips[0].chips_availability[0].value
+    getFilteredMacbooks(filteredChips[0].chips_availability[0].value)
     document.querySelectorAll('.chip-select').forEach((item, index) => {
       if (index === 0) {
         item.classList.add('selected')
@@ -79,27 +223,93 @@ const resetSelectedChip = () => {
     previouslySelected.classList.remove('selected')
   }
 }
+const updateColor = (id, color) => {
+  selectedColors.value[id] = color
+}
+
+const getMacbookImageSrc = (id) => {
+  const color = selectedColors.value[id]
+  if (color === 'Space Grey') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200'
+  } else if (color === 'Silver') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-silver-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830269'
+  } else if (color === 'Space Black') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-m3-max-pro-spaceblack-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830118'
+  }
+  return ''
+}
+const getMacbookColorsSrc = (color) => {
+  if (color === 'Space Grey') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-14-spacegray-cto-hero-202310_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=90&.v=1697913361217'
+  } else if (color === 'Silver') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-14-silver-cto-hero-202310_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=90&.v=1697913361277'
+  } else if (color === 'Space Black') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-14-m3-max-pro-spaceblack-cto-hero-202310_SW_COLOR?wid=64&hei=64&fmt=jpeg&qlt=90&.v=1697913361051'
+  }
+  return ''
+}
+
+const getMacbookChipImageSrc = (chipType) => {
+  if (chipType === 'm3') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562647'
+  } else if (chipType === 'm3pro') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-pro-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562659'
+  } else if (chipType === 'm3max') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691'
+  }
+  return ''
+}
 const selectChip = (chipValue) => {
   selectedChip.value = chipValue
+  //   reset selected chip state
   resetSelectedChip()
   const selectedChipDiv = document.getElementById(chipValue)
   if (selectedChipDiv) {
     document.getElementById(chipValue).classList.add('selected')
   }
+
+  //   get selected chip
+  getFilteredMacbooks(chipValue)
 }
 
 const getFilteredChips = () => {
-  const filteredChips = chipsAvailability.value.filter((item) => item.id === selectedSize.value)
+  const filteredChips = chipsAvailabilityState.value.filter(
+    (item) => item.category === selectedSize.value
+  )
   return filteredChips.length > 0 ? filteredChips[0].chips_availability : []
 }
+const getFilteredMacbooks = (chip) => {
+  let filteredMacbooks = []
+  switch (chip) {
+    case '14_all':
+      filteredMacbooks = macbookState.value.filter((item) => item.category === selectedSize.value)
+      break
+    case '16_all':
+      filteredMacbooks = macbookState.value.filter((item) => item.category === selectedSize.value)
+      break
+    default:
+      filteredMacbooks = macbookState.value.filter(
+        (item) => item.category === selectedSize.value && item.chip === selectedChip.value
+      )
+      break
+  }
+  filteredMacbooks.forEach((macbook) => {
+    selectedColors.value[macbook.id] = macbook.color[0]
+  })
+  macbookFilteredState.value = filteredMacbooks
+}
 
-const fetchChipsAvailability = async () => {
-  const response = await fetch('/src/assets/json/chips.json')
-  chipsAvailability.value = await response.json()
+const fetchInitialData = async () => {
+  const chipsData = await fetch('/src/assets/json/chips.json')
+  chipsAvailabilityState.value = await chipsData.json()
+  const macbooksData = await fetch('/src/assets/json/macbooks.json')
+  macbookState.value = await macbooksData.json()
+  //   fetch then get the filtered macbooks
+  getFilteredMacbooks('14_all')
 }
 
 onMounted(() => {
-  fetchChipsAvailability()
+  fetchInitialData()
 })
 </script>
 <style>
@@ -170,5 +380,39 @@ onMounted(() => {
   background-color: #1d1d1f;
   box-shadow: none;
   color: #fff;
+}
+.macbooks-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.content-limit {
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  width: var(--width-limit);
+}
+.macbook {
+  background-color: #f5f5f7;
+  border-radius: 18px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 16px 20px;
+}
+
+.select-btn {
+  display: block;
+  text-align: center;
+  background: var(--clr-button);
+  border-color: transparent;
+  color: white !important;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 9px;
+  padding: 9px;
+}
+@media screen and (max-width: 820px) {
+  .macbooks-content {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

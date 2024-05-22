@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
+  --clr-white: #fafafccc;
+  --clr-dimblack: #000000;
   --ff-main: 'Roboto', sans-serif;
   --fs-100: 12px;
   --fs-200: 14px;
@@ -24,7 +26,7 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
+  color: var(--clr-dimblack);
   background: var(--color-background);
   font-family: var(--ff-main);
   overflow-x: hidden;
@@ -36,6 +38,16 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1em !important;
+  font-weight: 500 !important;
 }
 
 .fs-100 {
@@ -129,4 +141,8 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   font-style: italic;
+}
+
+.fc-dimblack {
+  color: var(--clr-dimblack);
 }

@@ -59,13 +59,15 @@
       </div>
 
       <div :class="(isSubtitleOpen ? 'open' : '') + ' subtitle relative flex justify-between'">
-        <h1 class="subtitle-text h-fit fs-500 basis-full">Macbook Pro</h1>
-        <button
-          @click="toggleSubtitleOpen"
-          :class="'subtitle-caret flex justify-end ' + (isSubtitleOpen ? 'up' : 'down')"
-        >
-          <FontAwesomeIcon :icon="faAngleDown" />
-        </button>
+        <div class="subtitle-content">
+          <h1 class="subtitle-text h-fit fs-500 basis-full">Macbook Pro</h1>
+          <button
+            @click="toggleSubtitleOpen"
+            :class="'subtitle-caret flex justify-end ' + (isSubtitleOpen ? 'up' : 'down')"
+          >
+            <FontAwesomeIcon :icon="faAngleDown" />
+          </button>
+        </div>
         <div class="subtitle-options flex gap-3 fs-100 fc-dimblack opacity-65">
           <span>Overview</span>
           <span>macOS</span>
@@ -103,6 +105,11 @@ const toggleMenu = () => {
 }
 const toggleSubtitleOpen = () => {
   isSubtitleOpen.value = !isSubtitleOpen.value
+  if (isSubtitleOpen.value) {
+    document.querySelector('main').classList.add('blur')
+  } else {
+    document.querySelector('main').classList.remove('blur')
+  }
 }
 const getIconClass = (item) => {
   if (item.isIcon) {
@@ -121,9 +128,14 @@ onMounted(() => {
 header {
   position: fixed;
   width: 100%;
-  position: relative;
+  top: 0;
+  z-index: 99;
   background: var(--clr-white);
   border-bottom: 1px solid rgba(158, 158, 158, 0.5);
+}
+.header-content {
+  z-index: 10;
+  position: relative;
 }
 nav,
 .subtitle-text {
@@ -153,7 +165,7 @@ ul > li > span {
   height: 100vh;
   left: 0;
   top: -250vh;
-  background: white;
+  background: var(--clr-white);
   transition: top 0.5s ease;
   padding-top: 50px;
   z-index: 9;
@@ -184,7 +196,15 @@ ul > li > span {
 .subtitle-caret.up {
   transform: rotate(-180deg);
 }
-
+.subtitle-content {
+  position: relative;
+  background: var(--clr-white);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 @media screen and (max-width: 820px) {
   .subtitle-caret {
     opacity: 1;
@@ -221,11 +241,11 @@ ul > li > span {
   .subtitle-options {
     background: var(--clr-white);
     position: absolute;
-    top: -20vh;
+    top: -25vh;
     opacity: 0;
     flex-direction: column;
     padding-inline: 0.1rem;
-    width: 0;
+    width: 100vw;
     flex-basis: 0%;
     padding-inline: 2.5rem;
     padding-block: 0.75rem;
@@ -234,11 +254,12 @@ ul > li > span {
     top: 100%;
     left: 0;
     opacity: 1;
-    transition: all 0.3s ease-in, opacity 0.55s ease-in;
-    width: 100vw;
+    transition: all 0.3s ease-in, opacity 0s ease-in;
     height: fit-content;
     flex-basis: 100%;
     border-bottom: 1px solid rgba(158, 158, 158, 0.5);
+    background: var(--clr-white);
+    z-index: 1;
   }
 
   header.open {

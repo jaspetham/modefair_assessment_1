@@ -1,7 +1,10 @@
 <template>
-  <HeaderVue />
+  <Header />
+
+  <Body />
 </template>
 
 <script setup>
-import HeaderVue from './components/Header.vue'
+import Header from './components/Header.vue'
+import Body from './components/Body.vue'
 </script>

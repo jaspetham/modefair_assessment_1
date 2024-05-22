@@ -3,6 +3,7 @@
 
 :root {
   --clr-white: #fafafc;
+  --clr-grey: #fafafa;
   --clr-dimblack: #000000;
   --clr-link: #0066cc;
   --clr-button: #0071e3;
@@ -39,6 +40,10 @@
 
 a {
   color: var(--clr-link) !important;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body {
@@ -167,7 +172,11 @@ h6 {
 }
 
 .fc-dimblack {
-  color: var(--clr-dimblack);
+  color: var(--clr-dimblack) !important;
+}
+
+.bg-grey {
+  background: var(--clr-grey);
 }
 
 /* HIDE RADIO */
@@ -197,4 +206,10 @@ h6 {
 .swiper-pagination-bullet {
   width: 12px !important;
   height: 12px !important;
+}
+
+.content-limit {
+  margin-inline-end: auto;
+  margin-inline-start: auto;
+  width: var(--width-limit);
 }

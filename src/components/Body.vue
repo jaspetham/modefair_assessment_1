@@ -20,11 +20,13 @@
     <!-- added router view -->
     <RouterView />
   </main>
+  <Footer />
 </template>
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { ref, onMounted } from 'vue'
+import Footer from './Footer.vue'
 
 const ribbonDiv = ref(null)
 

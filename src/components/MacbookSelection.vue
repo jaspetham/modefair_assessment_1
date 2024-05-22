@@ -173,22 +173,29 @@
         <img
           width="568"
           height="392"
-          src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-witb-silver-202310?wid=1136&hei=784&fmt=p-jpg&qlt=95&.v=1698689812419"
+          :src="getBoxImgSrc(selectedSize.value)"
           alt="macbook"
         >
-        <span class="box-text block w-full">14-inch Macbook Pro</span>
+        <span class="box-text block w-full">
+          <span v-if="selectedSize === '14-inch'">14-inch Macbook Pro</span>
+          <span v-else>16-inch Macbook Pro</span>
+        </span>
       </div>
       <div
         class="text-center h-full flex flex-col items-center"
-        style="width:171px;background:#fafafa;"
+        style="width:171px;"
       >
-        <img
-          width="45"
-          height="392"
-          src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-witb-usb-c-magsafe-cable-silver-202310?wid=90&hei=784&fmt=p-jpg&qlt=95&.v=1698689792158"
-          alt="cable"
-        >
-        <span class="box-text block w-full bg-white">USB-C to MagSafe 3 <br> Cable (2m)</span>
+        <div class="img-wrapper flex justify-center w-full">
+          <img
+            width="45"
+            height="392"
+            :src="getBoxCableSrc()"
+            alt="cable"
+          >
+        </div>
+        <span class="box-text block w-full">
+          <span>USB-C to MagSafe 3 Cable (2m)</span>
+        </span>
       </div>
       <div class="text-center h-full">
         <img
@@ -197,7 +204,10 @@
           src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-witb-70w-adapter-202310_GEO_MY?wid=484&hei=784&fmt=p-jpg&qlt=95&.v=1698689824641"
           alt="power adapter"
         >
-        <span class="box-text block w-full">USB-C Power Adapter</span>
+        <span class="box-text block w-full">
+          <span v-if="selectedSize === '14-inch'"> USB-C Power Adapter</span>
+          <span v-else>140W USB-C Power Adapter</span>
+        </span>
       </div>
     </div>
 
@@ -215,18 +225,21 @@
           <div class="text-center h-full">
             <div class="img-wrapper">
               <img
-                src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-witb-silver-202310?wid=1136&hei=784&fmt=p-jpg&qlt=95&.v=1698689812419"
+                :src="getBoxImgSrc()"
                 alt="macbook"
               >
             </div>
-            <span class="box-text block w-full">14-inch Macbook Pro</span>
+            <span class="box-text block w-full">
+              <span v-if="selectedSize === '14-inch'">14-inch Macbook Pro</span>
+              <span v-else>16-inch Macbook Pro</span>
+            </span>
           </div>
         </swiper-slide>
         <swiper-slide>
           <div class="text-center h-full">
             <div class="img-wrapper">
               <img
-                src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-witb-usb-c-magsafe-cable-silver-202310?wid=90&hei=784&fmt=p-jpg&qlt=95&.v=1698689792158"
+                :src="getBoxCableSrc()"
                 alt="cable"
               >
             </div>
@@ -241,7 +254,10 @@
                 alt="power adapter"
               >
             </div>
-            <span class="box-text block w-full">USB-C Power Adapter</span>
+            <span class="box-text block w-full">
+              <span v-if="selectedSize === '14-inch'"> USB-C Power Adapter</span>
+              <span v-else>140W USB-C Power Adapter</span>
+            </span>
           </div>
         </swiper-slide>
       </swiper>
@@ -252,7 +268,7 @@
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faBookmark, faComments } from '@fortawesome/free-regular-svg-icons'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineProps } from 'vue'
 import { faAngleRight, faCirclePlus, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons'
 // Import Swiper Vue.js components
@@ -270,6 +286,7 @@ const macbookState = ref([])
 const macbookFilteredState = ref([])
 const selectedColors = ref({})
 const modules = ref([Pagination])
+const targetElement = ref(null)
 // select a size
 const selectSize = (size) => {
   selectedSize.value = size
@@ -329,6 +346,21 @@ const getMacbookChipImageSrc = (chipType) => {
     return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-m3-max-icon-202310?wid=102&hei=102&fmt=png-alpha&.v=1697039562691'
   }
   return ''
+}
+
+const getBoxImgSrc = () => {
+  if (selectedSize.value === '14-inch') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-witb-silver-202310?wid=1136&hei=784&fmt=p-jpg&qlt=95&.v=1698689812419'
+  } else {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp16-witb-spaceblack-202310?wid=1216&hei=784&fmt=p-jpg&qlt=95&.v=1698689790358'
+  }
+}
+const getBoxCableSrc = () => {
+  if (selectedSize.value === '14-inch') {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-witb-usb-c-magsafe-cable-silver-202310?wid=90&hei=784&fmt=p-jpg&qlt=95&.v=1698689792158'
+  } else {
+    return 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp-witb-usb-c-magsafe-cable-spaceblack-202310?wid=90&hei=784&fmt=p-jpg&qlt=95&.v=1698689793932'
+  }
 }
 const selectChip = (chipValue) => {
   selectedChip.value = chipValue
@@ -458,11 +490,6 @@ onMounted(() => {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
-.content-limit {
-  margin-inline-end: auto;
-  margin-inline-start: auto;
-  width: var(--width-limit);
-}
 .macbook {
   background-color: #f5f5f7;
   border-radius: 18px;
@@ -493,6 +520,22 @@ onMounted(() => {
 .custom-swiper {
   display: none;
 }
+
+.target-element {
+  width: 100%;
+  transition: position 0.3s ease;
+}
+
+.target-element.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.img-wrapper {
+  background: var(--clr-grey);
+}
 @media screen and (max-width: 820px) {
   .macbooks-content {
     grid-template-columns: 1fr;
@@ -509,9 +552,6 @@ onMounted(() => {
     width: 100%;
     height: 372px;
     object-fit: contain;
-  }
-  .img-wrapper {
-    background: #fafafa;
   }
 }
 </style>

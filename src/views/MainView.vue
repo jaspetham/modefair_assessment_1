@@ -1,6 +1,9 @@
 
 <template>
-  <div class="main-content py-8">
+  <div
+    id="scrollContainer"
+    class="main-content py-8"
+  >
     <div class="flex flex-col justify-center items-center py-4 gap-8">
       <h1 class="fs-900 font-medium text-center">Choose your new Macbook Pro.</h1>
       <!-- chat with specialist -->
@@ -17,16 +20,25 @@
       </div>
 
       <!-- main character macbook -->
-      <MacbookSelection />
+      <MacbookSelection :isFixed="isFixed" />
+
+      <!-- what to consider -->
+      <WhatToConsider />
+
+      <!-- compare model -->
+      <CompareModel />
+
+      <!-- apple care -->
+      <AppleCare />
     </div>
   </div>
 </template>
 
 <script setup>
+import AppleCare from './../components/AppleCare.vue'
+import CompareModel from './../components/CompareModel.vue'
+import WhatToConsider from './../components/WhatToConsider.vue'
 import MacbookSelection from './../components/MacbookSelection.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faComments } from '@fortawesome/free-regular-svg-icons'
 </script>
-
-<style scoped>
-</style>

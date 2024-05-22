@@ -190,3 +190,11 @@ h6 {
   border-radius: 50%;
   position: relative;
 }
+
+.swiper {
+  overflow: initial;
+}
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+}

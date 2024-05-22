@@ -1,0 +1,54 @@
+[
+  {
+    "isIcon": true,
+    "title": "faApple"
+  },
+  {
+    "isIcon": false,
+    "title": "Store"
+  },
+  {
+    "isIcon": false,
+    "title": "Mac"
+  },
+  {
+    "isIcon": false,
+    "title": "Ipad"
+  },
+  {
+    "isIcon": false,
+    "title": "Iphone"
+  },
+  {
+    "isIcon": false,
+    "title": "Watch"
+  },
+  {
+    "isIcon": false,
+    "title": "Airpods"
+  },
+  {
+    "isIcon": false,
+    "title": "TV & Home"
+  },
+  {
+    "isIcon": false,
+    "title": "Entertainment"
+  },
+  {
+    "isIcon": false,
+    "title": "Accesories"
+  },
+  {
+    "isIcon": false,
+    "title": "Support"
+  },
+  {
+    "isIcon": true,
+    "title": "faMagnifyingGlass"
+  },
+  {
+    "isIcon": true,
+    "title": "faShoppingBag"
+  }
+]

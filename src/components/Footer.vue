@@ -120,4 +120,9 @@ ul.footer-bottom > li:last-child::after {
 .footer-top > li:first-child::before {
   display: none;
 }
+@media screen and (max-width: 820px) {
+    footer .content-limit{
+        width:100%
+    }
+}
 </style>

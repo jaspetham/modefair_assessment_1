@@ -27,7 +27,7 @@
     --fs-700: 28px;
     --fs-800: 32px;
     --fs-900: 38px;
-    --width-limit: 80%;
+    --width-limit: 90%;
   }
 }
 *,
@@ -58,7 +58,6 @@ body {
 #app {
   overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
   position: relative;
 }
 

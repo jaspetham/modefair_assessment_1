@@ -1,6 +1,5 @@
 <template>
-  <main class="content-limit">
-
+  <main id="product" class="content-limit">
     <div class="img-wrapper relative fs-700">
         <div class="img-detail flex flex-col gap-4">
             <div class="img-text">
@@ -44,7 +43,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
   grid-template-columns: minmax(200px,40%) 1fr;
 }
 .img-detail{
-
     z-index: 1;
     color: #fff;
     height:100%;
@@ -69,6 +67,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
         margin:auto;
         text-align: center;
         align-items: center;
+    }
+    #product.content-limit{
+        width:100%;
     }
 }
 </style>

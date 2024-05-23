@@ -1,35 +1,20 @@
 <template>
   <!-- empty non working header -->
-  <header :class="(isSubtitleOpen ? 'open' : 'close')">
+  <header :class="isSubtitleOpen ? 'open' : 'close'">
     <div class="header-content max-w-[1024px] mx-auto">
       <nav class="relative">
         <ul class="flex justify-between items-center fs-100">
-          <li
-            v-for="(item, index) in headerItems"
-            :key="index"
-          >
-            <span
-              :class="getIconClass(item) + 'header-icon'"
-              v-if="item.isIcon"
-            >
+          <li v-for="(item, index) in headerItems" :key="index">
+            <span :class="getIconClass(item) + 'header-icon'" v-if="item.isIcon">
               <FontAwesomeIcon :icon="icons[item.title]" />
             </span>
-            <span
-              class="header-text"
-              v-else
-            >{{ item.title }}</span>
+            <span class="header-text" v-else>{{ item.title }}</span>
           </li>
         </ul>
 
-        <button
-          class="hamburger fs-500"
-          @click="toggleMenu"
-        >
+        <button class="hamburger fs-500" @click="toggleMenu">
           <div class="menu-icon">
-            <input
-              class="menu-icon__cheeckbox"
-              type="checkbox"
-            />
+            <input class="menu-icon__cheeckbox" type="checkbox" />
             <div>
               <span></span>
               <span></span>
@@ -43,19 +28,17 @@
          -->
       <div :class="'hamburger-menu ' + (isMenuOpen ? 'open' : 'close')">
         <ul class="flex flex-col gap-3">
-          <li
-            v-for="(item, index) in headerItems"
-            :key="index"
-          >
-            <span
-              class="fs-700 font-bold"
-              v-if="!item.isIcon"
-            >{{ item.title }}</span>
+          <li v-for="(item, index) in headerItems" :key="index">
+            <span class="fs-700 font-bold" v-if="!item.isIcon">{{ item.title }}</span>
           </li>
         </ul>
       </div>
 
-      <div :class="(isSubtitleOpen ? 'open' : '') + ' subtitle relative flex justify-between'">
+      <div
+        :class="
+          (isSubtitleOpen ? 'open' : '') + ' subtitle relative flex justify-between'
+        "
+      >
         <div class="subtitle-content">
           <h1 class="subtitle-text h-fit fs-500 basis-full font-medium">Macbook Pro</h1>
           <button
@@ -76,49 +59,58 @@
 </template>
 
 <script setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faApple } from '@fortawesome/free-brands-svg-icons'
-import { faMagnifyingGlass, faShoppingBag, faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { ref, onMounted } from 'vue'
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faApple } from "@fortawesome/free-brands-svg-icons";
+import {
+  faMagnifyingGlass,
+  faShoppingBag,
+  faAngleDown,
+} from "@fortawesome/free-solid-svg-icons";
+import { ref, onMounted } from "vue";
 const icons = {
   faApple,
   faMagnifyingGlass,
-  faShoppingBag
-}
+  faShoppingBag,
+};
 
 // store data json into header items
-const headerItems = ref([])
+const headerItems = ref([]);
 // state for menu open
-const isMenuOpen = ref(false)
+const isMenuOpen = ref(false);
 // state for subtitle open
-const isSubtitleOpen = ref(false)
+const isSubtitleOpen = ref(false);
 
 const fetchHeaderItems = async () => {
-  const response = await fetch('/src/assets/json/header.json')
-  headerItems.value = await response.json()
-}
+  const response = await fetch("/src/assets/json/header.json");
+  headerItems.value = await response.json();
+};
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-const toggleSubtitleOpen = () => {
-  isSubtitleOpen.value = !isSubtitleOpen.value
-  if (isSubtitleOpen.value) {
-    document.querySelector('main').classList.add('blur')
+  isMenuOpen.value = !isMenuOpen.value;
+  if (isMenuOpen.value) {
+    document.querySelector("body").style.overflowY = "hidden";
   } else {
-    document.querySelector('main').classList.remove('blur')
+    document.querySelector("body").style.overflowY = "auto";
   }
-}
+};
+const toggleSubtitleOpen = () => {
+  isSubtitleOpen.value = !isSubtitleOpen.value;
+  if (isSubtitleOpen.value) {
+    document.querySelector("main").classList.add("blur");
+  } else {
+    document.querySelector("main").classList.remove("blur");
+  }
+};
 const getIconClass = (item) => {
   if (item.isIcon) {
-    return item.title === 'faApple' ? 'fs-400 ' : 'fs-200 '
+    return item.title === "faApple" ? "fs-400 " : "fs-200 ";
   }
-  return ''
-}
+  return "";
+};
 
 // on load get the header json
 onMounted(() => {
-  fetchHeaderItems()
-})
+  fetchHeaderItems();
+});
 </script>
 
 <style scoped>

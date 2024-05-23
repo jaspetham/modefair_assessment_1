@@ -240,6 +240,10 @@ h6 {
     border:2px solid var(--clr-dimblack);
 }
 
+.bg-button{
+    background: var(--clr-button);
+}
+
 select:focus{
     outline: var(--clr-button);
     border: 2px solid var(--clr-button);

@@ -209,8 +209,6 @@
                     <p class="fs-100 font-medium">Free and easy returns</p>
                 </div>
             </div>
-
-            <!-- <h1>{{ macbookTotalPrice }} - {{ macbookTotalInstallment }}</h1> -->
         </div>
     </div>
     <div class="img-wrapper relative fs-700 content-limit">
@@ -239,12 +237,59 @@
         alt="ads"
       >
     </div>
+
+    <!-- sticky summary price -->
+    <div class="summary-price">
+        <div class="summary-content content-limit py-6">
+            <div class="flex gap-4 order-2">
+                <div class="price font-medium fs-600 flex flex-col gap-1 items-end">
+                    <h1>RM {{ macbookTotalPrice }} or</h1>
+                    <h1>RM {{ macbookTotalInstallment }}/mo. for 24 mo.<sup>*</sup></h1>
+                    <a class="fs-200 explore-options flex items-center gap-" href="https://www.apple.com/my/shop/financing/installments/overlay?ca=25599.00&product=Z1AW" target="_blank">
+                        <span>Explore monthly instalment options</span>
+                        <div>
+                            <FontAwesomeIcon class="pr-2 fs-100" :icon="faAngleRight"/>
+                            <FontAwesomeIcon :icon="faSquarePlus"/>
+                        </div>
+                    </a>
+                </div>
+                <div class="add-bag flex gap-4 items-center h-fit">
+                    <button class="add-btn bg-button text-white fs-200 font-medium whitespace-nowrap">Add to bag</button>
+                    <FontAwesomeIcon class="fs-600 clr-link" :icon="faBookmark" />
+                </div>
+            </div>
+            <div :class="showDelivery ? 'active' : ''" class="flex gap-2 shipping-wrapper order-1">
+                <div class="pt-1">
+                    <svg class="as-svgicon-rtl-mirrored as-svgicon as-svgicon-boxtruck as-svgicon-reduced as-svgicon-boxtruckreduced" viewBox="0 0 25 25" role="img" aria-hidden="true" width="25px" height="25px"><path fill="none" d="M0 0h25v25H0z"></path><path fill="#1d1d1f" d="m23.482 12.847-2.92-3.209A1.947 1.947 0 0 0 18.985 9H17V6.495a2.5 2.5 0 0 0-2.5-2.5h-11a2.5 2.5 0 0 0-2.5 2.5v9.75a2.5 2.5 0 0 0 2.5 2.5h.548A2.746 2.746 0 0 0 6.75 21.02 2.618 2.618 0 0 0 9.422 19h6.681a2.744 2.744 0 0 0 5.347-.23h.735A1.656 1.656 0 0 0 24 16.98v-2.808a1.937 1.937 0 0 0-.518-1.325ZM8.426 18.745a1.74 1.74 0 0 1-3.352 0 1.577 1.577 0 0 1 .015-1 1.738 1.738 0 0 1 3.322 0 1.578 1.578 0 0 1 .015 1ZM9.447 18a2.726 2.726 0 0 0-5.394-.255H3.5a1.502 1.502 0 0 1-1.5-1.5v-9.75a1.502 1.502 0 0 1 1.5-1.5h11a1.502 1.502 0 0 1 1.5 1.5V18Zm10.972.77a1.738 1.738 0 0 1-3.337 0 1.573 1.573 0 0 1 0-1 1.742 1.742 0 1 1 3.337 1ZM23 16.98c0 .569-.229.79-.815.79h-.735A2.73 2.73 0 0 0 17 16.165V10h1.986a.976.976 0 0 1 .838.314l2.927 3.214a.95.95 0 0 1 .249.644Zm-1.324-3.36a.512.512 0 0 1 .174.38h-3.306a.499.499 0 0 1-.544-.528V11h1.073a.76.76 0 0 1 .594.268Z"></path></svg>
+                </div>
+                <div class="shipping-details flex fs-200 flex-col pt-1">
+                    <p class="font-medium">Ships: </p>
+                    <p>3–5 business days</p>
+                    <p>Free Shipping</p>
+                    <a class="flex items-center" href="#" target="_blank">
+                        <span class="pr-1">Get delivery dates</span>
+                        <FontAwesomeIcon :icon="faSquarePlus"/>
+                    </a>
+                </div>
+            </div>
+            <button
+                @click="showDeliveryState()"
+                :class="showDelivery ? 'active' : ''"
+                class="show-delivery-options mobile-view clr-link flex gap-1 order-3 items-center">
+                {{ showDelivery ? 'Hide Options' : 'Show Options' }}
+                <FontAwesomeIcon
+                    class="caret-down fs-100 clr-link"
+                    :class="showDelivery ? 'rotate' : ''"
+                    :icon="faAngleDown" />
+            </button>
+        </div>
+    </div>
   </main>
 </template>
 
 <script setup>
 import Toast from './../components/Toast.vue'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faSquarePlus, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ref, onMounted } from 'vue';
@@ -256,10 +301,16 @@ const selectedStorage = ref('1TB')
 const macbookTotalPrice = ref(0)
 const macbookTotalInstallment = ref(0)
 const showToast = ref(false);
+const showDelivery = ref(false);
 
 const handleNotification = (value) => {
   showToast.value = value;
 };
+
+const showDeliveryState = () =>{
+    console.log(showDelivery.value);
+    showDelivery.value = !showDelivery.value;
+}
 
 // it is very ineffecient to do this but due to time constraint, i have to hardcode it
 const updateMemoryPrice = (price1, price2, price3, price4, price5) => {
@@ -544,6 +595,31 @@ onMounted(() => {
 .mobile-view{
     display:none;
 }
+.summary-price{
+    background: #f5f5f7;
+    border-top: 1px solid #d2d2d7;
+    inset-inline: 0;
+    bottom: 0;
+    min-height: 130px;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+.summary-content{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1rem;
+}
+.add-btn{
+    border-radius: 8px;
+    padding:0.5rem 1rem;
+}
+.caret-down{
+    transition: all .5s ease;
+}
+.rotate{
+    transform:rotate(180deg)
+}
 @media (max-width: 820px) {
     #product .img-wrapper, .product-wrapper{
         grid-template-columns: 1fr;
@@ -567,6 +643,40 @@ onMounted(() => {
 
     #product .img-wrapper{
         width:100%;
+    }
+
+    .summary-price{
+        bottom:0;
+    }
+    .summary-content{
+        grid-template-columns: 1fr;
+    }
+    .price{
+        align-items:flex-start ;
+    }
+    a.explore-options{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .summary-content.content-limit{
+        width:90%;
+    }
+    .shipping-wrapper{
+        order:2;
+        position: relative;
+        opacity: 0;
+        top: -100%;
+        height: 0;
+        width: 0;
+    }
+    .shipping-wrapper.active{
+        top:0;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    .show-delivery-options.active{
+        order:3;
     }
 }
 </style>

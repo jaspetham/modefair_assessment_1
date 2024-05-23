@@ -1,5 +1,10 @@
 <template>
   <main id="product" class="outer-wrapper h-screen flex overflow-y-auto">
+    <Toast
+        v-if="showToast"
+        :showToast="showToast"
+        :selectedItem="selectedCore"
+        @notifyParent="handleNotification"/>
     <div class="product-wrapper p-8 gap-12 content-limit">
         <!-- left side -->
         <div class="relative">
@@ -120,6 +125,7 @@
 </template>
 
 <script setup>
+import Toast from './../components/Toast.vue'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -127,8 +133,13 @@ import { ref, onMounted } from 'vue';
 
 const macbookData = ref({})
 const selectedCore = ref('30-core')
-const macbookTotalPrice = ref(0);
-const macbookTotalInstallment = ref(0);
+const macbookTotalPrice = ref(0)
+const macbookTotalInstallment = ref(0)
+const showToast = ref(false);
+
+const handleNotification = (value) => {
+  showToast.value = value;
+};
 
 // select a core
 const selectCore = (chip) => {
@@ -149,6 +160,7 @@ const selectCore = (chip) => {
         document.getElementById("40-core").childNodes[1].innerHTML = "+ RM 1,200.00";
        calculatePriceInstallment(-1200);
     }
+    showToast.value = !showToast.value;
 }
 
 const calculatePriceInstallment = (price) =>{

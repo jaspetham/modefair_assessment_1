@@ -11,7 +11,7 @@
     ],
     "price": 14799.00,
     "installment": 616.63,
-    "chip_selection": [
+    "chips": [
         {
           "core": "30-core",
           "title": "Apple M3 Max chip with 14‑core CPU, 30‑core GPU and 16‑core Neural Engine",
@@ -25,65 +25,89 @@
           "priceText": "+ RM 1,200.00"
         }
     ],
-    "memory": [
+    "memories": [
         {
+            "value": "36GB",
             "title":"36GB unified memory",
             "suitable": "30-core",
             "price":0,
             "priceText": ""
         },
         {
-          "title": "48GB unified memory",
-          "suitable": "40-core",
-          "price": 800.00,
-          "priceText": "+ RM 800.00"
+            "value": "48GB",
+            "title": "48GB unified memory",
+            "suitable": "40-core",
+            "price": 800.00,
+            "priceText": "+ RM 800.00"
         },
         {
-          "title": "64GB unified memory",
-          "suitable": "40-core",
-          "price": 1600.0,
-          "priceText": "+ RM 1,600.00"
+            "value": "64GB",
+            "title": "64GB unified memory",
+            "suitable": "40-core",
+            "price": 1600.0,
+            "priceText": "+ RM 1,600.00"
         },
         {
-          "title": "96GB unified memory",
-          "suitable": "30-core",
-          "price": 3200.00,
-          "priceText": "+ RM 3,200.00"
+            "value": "96GB",
+            "title": "96GB unified memory",
+            "suitable": "30-core",
+            "price": 3200.00,
+            "priceText": "+ RM 3,200.00"
         },
         {
-          "title": "128GB unified memory",
-          "suitable": "40-core",
-          "price": 4800.00,
-          "priceText": "+ RM 4,800.00"
+            "value": "128GB",
+            "title": "128GB unified memory",
+            "suitable": "40-core",
+            "price": 4800.00,
+            "priceText": "+ RM 4,800.00"
         }
     ],
-    "storage":[
+    "storages":[
       {
+        "value": "1TB",
         "title": "1TB SSD storage",
         "price": 0,
         "priceText": ""
       },
       {
+        "value": "2TB",
         "title": "2TB SSD storage",
         "price": 1600.00,
         "priceText": "+ RM 1,600.00"
       },
       {
+        "value": "4TB",
         "title": "4TB SSD storage",
         "price": 4000.00,
         "priceText": "+ RM 4,000.00"
       },
       {
+        "value": "8TB",
         "title": "8TB SSD storage",
         "price": 8800.00,
         "priceText": "+ RM 8,800.00"
       }
     ],
-    "keyboard_langugage":[
-        "Backlit Magic Keyboard with Touch ID - US English",
-        "Backlit Magic Keyboard with Touch ID - Chinese (Pinyin)",
-        "Backlit Magic Keyboard with Touch ID - Chinese (Zhuyin)",
-        "Backlit Magic Keyboard with Touch ID - Arabic",
-        "Backlit Magic Keyboard with Touch ID - Japanese"
+    "keyboard_langugages":[
+        {
+            "value": "english",
+            "title": "Backlit Magic Keyboard with Touch ID - US English"
+        },
+        {
+            "value": "chinese_pinyin",
+            "title": "Backlit Magic Keyboard with Touch ID - Chinese (Pinyin)"
+        },
+        {
+            "value": "chinese_zhuyin",
+            "title": "Backlit Magic Keyboard with Touch ID - Chinese (Zhuyin)"
+        },
+        {
+            "value": "arabic",
+            "title":"Backlit Magic Keyboard with Touch ID - Arabic"
+        },
+        {
+            "value": "japanese",
+            "title": "Backlit Magic Keyboard with Touch ID - Japanese"
+        }
     ]
   }

@@ -219,7 +219,7 @@ ul > li > span {
   ul {
     padding-inline-end: calc(1rem + 32px);
   }
-  ul > li > span.header-text {
+  ul > li span.header-text {
     position: absolute;
     top: -100px;
   }

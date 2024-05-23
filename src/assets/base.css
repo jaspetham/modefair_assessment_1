@@ -4,6 +4,7 @@
 :root {
   --clr-white: #fafafc;
   --clr-grey: #fafafa;
+  --clr-deepgrey:#6E6E73;
   --clr-dimblack: #000000;
   --clr-link: #0066cc;
   --clr-button: #0071e3;
@@ -178,6 +179,14 @@ h6 {
   color: var(--clr-dimblack) !important;
 }
 
+.fc-grey{
+    color:var(--clr-grey)!important;
+}
+
+.fc-deepgrey{
+    color:var(--clr-deepgrey)!important;
+}
+
 .bg-grey {
   background: var(--clr-grey);
 }
@@ -218,4 +227,21 @@ h6 {
 }
 .bb-1{
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+.form-dropdown{
+    cursor: pointer;
+}
+
+.form-dropdown > select{
+    width: 100%;
+    padding: 0.75rem 0.75rem;
+    cursor:pointer;
+    border-radius: 12px;
+    border:2px solid var(--clr-dimblack);
+}
+
+select:focus{
+    outline: var(--clr-button);
+    border: 2px solid var(--clr-button);
+    border-radius: 12px;
 }

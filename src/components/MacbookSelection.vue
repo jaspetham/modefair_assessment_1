@@ -125,7 +125,7 @@
             </div>
             <div class="select-content py-3">
               <RouterLink
-                to="/about"
+                to="/product"
                 class="select-btn fs-200 font-medium"
               >Select</RouterLink>
             </div>

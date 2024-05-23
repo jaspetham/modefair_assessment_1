@@ -675,6 +675,10 @@ onMounted(() => {
         width:100%;
         height:100%;
     }
+    .show-delivery-options{
+        position: relative;
+        z-index: 999;
+    }
     .show-delivery-options.active{
         order:3;
     }

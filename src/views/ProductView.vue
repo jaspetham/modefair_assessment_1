@@ -34,7 +34,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <style>
-.img-wrapper {
+#product .img-wrapper {
   margin: auto;
   position: relative;
   overflow: hidden;
@@ -59,7 +59,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     max-width:20ch;
 }
 @media (max-width: 820px) {
-    .img-wrapper{
+    #product .img-wrapper{
         grid-template-columns: 1fr;
     }
     .img-text{

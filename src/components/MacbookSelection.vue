@@ -35,7 +35,7 @@
       <!-- macbooks -->
       <div class="macbooks-content">
         <div
-          class="macbook flex flex-col gap-3"
+          class="macbook flex flex-col gap-3 items-center"
           v-for="(macbook) in macbookFilteredState"
           :key="macbook.id"
         >

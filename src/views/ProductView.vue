@@ -12,8 +12,6 @@
 
 <style>
 .img-wrapper {
-  max-width: 1070px;
-  min-width: 980px;
   margin: auto;
   position: relative;
   overflow: hidden;

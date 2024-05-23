@@ -9,7 +9,7 @@
       >
     </div>
 
-    <div class="mt-6 text-center flex flex-col gap-6">
+    <div class="mt-6 text-center flex flex-col items-center justify-center gap-6">
       <h1 class="fs-700 font-medium pb-4">AppleCare+ for Mac</h1>
       <p class="fs-400 text-left">
         Every Mac comes with a <a

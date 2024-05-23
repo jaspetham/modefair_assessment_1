@@ -1,6 +1,6 @@
 
 <template>
-  <footer class="bg-grey md:p-8 pb-4">
+  <footer class="bg-grey md:p-8 pb-4 p-6">
     <div class="content-limit">
       <div class="footer-top fs-100 font-light flex flex-col gap-4">
         <p><sup>*</sup> Monthly pricing is after purchase using credit card interest at 0% p.a. over a nine-month tenure. Monthly pricing is rounded to the nearest ringgit and displayed for each product added in the order. Exact pricing will be for the whole order and provided by your bank, subject to your bank’s terms and conditions.</p>

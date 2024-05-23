@@ -27,7 +27,7 @@
     --fs-700: 28px;
     --fs-800: 32px;
     --fs-900: 38px;
-    --width-limit: 90%;
+    --width-limit: 85%;
   }
 }
 *,
@@ -40,6 +40,10 @@
 
 a {
   color: var(--clr-link) !important;
+}
+
+.clr-link{
+    color:var(--clr-link)!important;
 }
 
 a:hover {
@@ -211,4 +215,7 @@ h6 {
   margin-inline-end: auto;
   margin-inline-start: auto;
   width: var(--width-limit);
+}
+.bb-1{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }

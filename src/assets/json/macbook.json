@@ -1,0 +1,89 @@
+{
+    "id": 1,
+    "title": "Customise your 14‑inch MacBook Pro - Space Black",
+    "subtitle": [
+      "Apple M3 Max chip with 14‑core CPU, 30‑core GPU and 16‑core Neural Engine",
+      "36GB unified memory",
+      "1TB SSD storage,",
+      "14-inch Liquid Retina XDR display²",
+      "96W USB-C Power Adapter",
+      "Three Thunderbolt 4 ports, HDMI port, SDXC card slot, headphone jack, MagSafe 3 port"
+    ],
+    "price": 14799.00,
+    "installment": 616.63,
+    "chip_selection": [
+        {
+          "core": "30-core",
+          "title": "Apple M3 Max chip with 14‑core CPU, 30‑core GPU and 16‑core Neural Engine",
+          "price": 0,
+          "priceText": ""
+        },
+        {
+          "core": "40-core",
+          "title": "Apple M3 Max chip with 16‑core CPU, 40‑core GPU and 16‑core Neural Engine",
+          "price": 1200,
+          "priceText": "+ RM 1,200.00"
+        }
+    ],
+    "memory": [
+        {
+            "title":"36GB unified memory",
+            "suitable": "30-core",
+            "price":0,
+            "priceText": ""
+        },
+        {
+          "title": "48GB unified memory",
+          "suitable": "40-core",
+          "price": 800.00,
+          "priceText": "+ RM 800.00"
+        },
+        {
+          "title": "64GB unified memory",
+          "suitable": "40-core",
+          "price": 1600.0,
+          "priceText": "+ RM 1,600.00"
+        },
+        {
+          "title": "96GB unified memory",
+          "suitable": "30-core",
+          "price": 3200.00,
+          "priceText": "+ RM 3,200.00"
+        },
+        {
+          "title": "128GB unified memory",
+          "suitable": "40-core",
+          "price": 4800.00,
+          "priceText": "+ RM 4,800.00"
+        }
+    ],
+    "storage":[
+      {
+        "title": "1TB SSD storage",
+        "price": 0,
+        "priceText": ""
+      },
+      {
+        "title": "2TB SSD storage",
+        "price": 1600.00,
+        "priceText": "+ RM 1,600.00"
+      },
+      {
+        "title": "4TB SSD storage",
+        "price": 4000.00,
+        "priceText": "+ RM 4,000.00"
+      },
+      {
+        "title": "8TB SSD storage",
+        "price": 8800.00,
+        "priceText": "+ RM 8,800.00"
+      }
+    ],
+    "keyboard_langugage":[
+        "Backlit Magic Keyboard with Touch ID - US English",
+        "Backlit Magic Keyboard with Touch ID - Chinese (Pinyin)",
+        "Backlit Magic Keyboard with Touch ID - Chinese (Zhuyin)",
+        "Backlit Magic Keyboard with Touch ID - Arabic",
+        "Backlit Magic Keyboard with Touch ID - Japanese"
+    ]
+  }

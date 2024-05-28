@@ -646,7 +646,8 @@ onMounted(() => {
     }
 
     .summary-price{
-        bottom:0;
+        top:0;
+        height:fit-content;
     }
     .summary-content{
         grid-template-columns: 1fr;

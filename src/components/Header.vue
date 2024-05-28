@@ -125,7 +125,7 @@ onMounted(() => {
 <style scoped>
 header {
   /* if i want to use fixed nav */
-  /* position: fixed;  */
+  /* position: fixed; */
   position: relative;
   width: 100%;
   top: 0;

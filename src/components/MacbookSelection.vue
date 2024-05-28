@@ -1,7 +1,6 @@
 <template>
-  <div class="selection-action flex flex-col items-center justify-center gap-8">
     <!-- select screen size -->
-    <div class="size-selection flex justify-center items-center fs-400">
+    <div id="sizeSelection" class="size-selection flex justify-center items-center fs-400">
       <div class="size-selector">
         <button
           class="size-select left"
@@ -17,6 +16,7 @@
         >16-Inch</button>
       </div>
     </div>
+  <div class="selection-action flex flex-col items-center justify-center gap-8">
     <div class="content-limit flex flex-col items-center gap-4">
       <!-- filter chip -->
       <div class="filter-chip-wrapper">
@@ -408,7 +408,23 @@ const fetchInitialData = async () => {
 }
 
 onMounted(() => {
-  fetchInitialData()
+  fetchInitialData();
+  const sizeSelectionDiv = document.getElementById('sizeSelection');
+
+  const originalOffsetTop = sizeSelectionDiv.offsetTop;
+  if(originalOffsetTop != 0){
+    sizeSelectionDiv.setAttribute('originalTop', originalOffsetTop);
+  }
+
+  document.addEventListener('scroll', (event) => {
+        const offset = 200;
+        if(sizeSelectionDiv && window.scrollY > (sizeSelectionDiv.offsetTop + offset)){
+            sizeSelectionDiv.classList.add('scrolled');
+        }
+        if(window.scrollY < sizeSelectionDiv.getAttribute('originalTop')){
+            sizeSelectionDiv.classList.remove('scrolled');
+        }
+  })
 })
 </script>
 

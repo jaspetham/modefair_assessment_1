@@ -249,3 +249,14 @@ select:focus{
     border: 2px solid var(--clr-button);
     border-radius: 12px;
 }
+
+.scrolled{
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-block:20px;
+    background:#f9f9f9f2;
+    display:flex!important;
+}

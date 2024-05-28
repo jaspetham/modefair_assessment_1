@@ -202,16 +202,21 @@ h6 {
 /* IMAGE STYLES */
 [type='radio'] + img {
   cursor: pointer;
+  border:1px solid transparent;
   padding: 0.1rem;
 }
 
 /* CHECKED STYLES */
 [type='radio']:checked + img {
-  outline: 2px solid #0071e3;
+  outline: 1px solid #0071e3;
+  outline-offset: 1px;
   border-radius: 50%;
   position: relative;
 }
 
+[type='radio']:focus + img{
+    border:1px solid #0071e3;
+}
 .swiper {
   overflow: initial;
 }

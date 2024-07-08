@@ -25,7 +25,7 @@
           </li>
         </ul>
 
-        <button class="hamburger fs-500" @click="toggleMenu">
+        <button ref="burgerMenu" class="hamburger fs-500" @click="toggleMenu">
           <div class="menu-icon">
             <input class="menu-icon__cheeckbox" type="checkbox" />
             <div>
@@ -77,7 +77,7 @@ import { faApple } from "@fortawesome/free-brands-svg-icons";
 import {
   faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 const icons = {
   faApple
 };
@@ -116,6 +116,7 @@ const getIconClass = (item) => {
   return "";
 };
 
+const burgerMenu = ref(null);
 // on load get the header json
 onMounted(() => {
   fetchHeaderItems();
@@ -125,7 +126,7 @@ onMounted(() => {
 <style scoped>
 header {
   /* if i want to use fixed nav */
-  /* position: fixed;  */
+  /* position: fixed; */
   position: relative;
   width: 100%;
   top: 0;
@@ -206,6 +207,9 @@ ul > li > span {
   width: 100%;
 }
 @media screen and (max-width: 820px) {
+    header{
+        z-index:-1;
+    }
   .subtitle-caret {
     opacity: 1;
     visibility: visible;

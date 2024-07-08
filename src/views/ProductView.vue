@@ -646,7 +646,8 @@ onMounted(() => {
     }
 
     .summary-price{
-        bottom:0;
+        top:0;
+        height:fit-content;
     }
     .summary-content{
         grid-template-columns: 1fr;
@@ -674,6 +675,10 @@ onMounted(() => {
         opacity: 1;
         width:100%;
         height:100%;
+    }
+    .show-delivery-options{
+        position: relative;
+        z-index: 999;
     }
     .show-delivery-options.active{
         order:3;

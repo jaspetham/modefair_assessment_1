@@ -90,7 +90,7 @@ const isMenuOpen = ref(false);
 const isSubtitleOpen = ref(false);
 
 const fetchHeaderItems = async () => {
-  const response = await fetch("/src/assets/json/header.json");
+  const response = await fetch("/json/header.json");
   headerItems.value = await response.json();
 };
 const toggleMenu = () => {

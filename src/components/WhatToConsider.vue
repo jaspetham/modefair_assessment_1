@@ -41,7 +41,7 @@ import { ref, onMounted } from 'vue'
 
 const chipsData = ref([])
 const fetchInitialData = async () => {
-  const data = await fetch('/src/assets/json/chip-details.json')
+  const data = await fetch('/json/chip-details.json')
   chipsData.value = await data.json()
 }
 onMounted(() => {

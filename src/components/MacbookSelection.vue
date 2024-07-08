@@ -399,9 +399,9 @@ const getFilteredMacbooks = (chip) => {
 }
 
 const fetchInitialData = async () => {
-  const chipsData = await fetch('/src/assets/json/chips.json')
+  const chipsData = await fetch('/json/chips.json')
   chipsAvailabilityState.value = await chipsData.json()
-  const macbooksData = await fetch('/src/assets/json/macbooks.json')
+  const macbooksData = await fetch('/json/macbooks.json')
   macbookState.value = await macbooksData.json()
   //   fetch then get the filtered macbooks
   getFilteredMacbooks('14_all')

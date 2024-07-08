@@ -505,7 +505,7 @@ const selectStorage = (storage) => {
 }
 
 const fetchInitialData = async () => {
-  const data = await fetch('/src/assets/json/macbook.json')
+  const data = await fetch('/json/macbook.json')
   macbookData.value = await data.json()
   macbookTotalPrice.value = macbookData.value.price
   macbookTotalInstallment.value = macbookData.value.installment
